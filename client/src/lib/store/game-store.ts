@@ -51,6 +51,7 @@ export function openApi() {
 }
 
 export function castVote(gameId: string, human: boolean) {
+	console.log('Casting vote', gameId, human);
 	socket.emit('game-vote', {
 		game: gameId,
 		human
