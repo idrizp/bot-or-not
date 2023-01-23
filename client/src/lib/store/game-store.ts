@@ -46,12 +46,13 @@ export function openApi() {
 		}
 		messages.set([]);
 	});
-	socket.on('game-end', (data: { winner: string }) => {});
+	socket.on('game-end', (data: { winner: string }) => {
+		winner.set(data.winner);
+	});
 	socket.emit('queue');
 }
 
 export function castVote(gameId: string, human: boolean) {
-	console.log('Casting vote', gameId, human);
 	socket.emit('game-vote', {
 		game: gameId,
 		human
