@@ -1,6 +1,7 @@
 import { writable } from 'svelte/store';
 import { io, type Socket } from 'socket.io-client';
 import { env } from '$env/dynamic/public';
+import { dev } from '$app/environment';
 
 export interface Message {
 	opponent: boolean;
@@ -28,7 +29,7 @@ export function closeApi() {
 }
 
 export function openApi() {
-	socket = io(`ws://${env.PUBLIC_API_HOST}`);
+	socket = io(`ws${dev ? '' : 's'}://${env.PUBLIC_API_HOST}`);
 	socket.on('connect', () => {
 		console.log('Connected to API.');
 	});
