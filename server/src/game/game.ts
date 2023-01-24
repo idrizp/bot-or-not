@@ -48,7 +48,7 @@ export class Game {
   }
 
   public computeWinner(): string | null {
-    if (this.forcedWinner != null) {
+    if (this.forcedWinner !== null) {
       return this.forcedWinner;
     }
     if (this.vote === null) {

@@ -224,6 +224,11 @@ export class GameManager {
 
   public endGame(game: Game) {
     game.state = GameState.END;
+    this.broadcastToGame(game, "game-end", {
+      winner: game.computeWinner(),
+    });
+    console.log(game.computeWinner());
+
     const playerUser = this.getUser(game.player.id);
     if (playerUser) {
       playerUser.game = null;
@@ -235,9 +240,6 @@ export class GameManager {
         botUser.game = null;
       }
     }
-    this.broadcastToGame(game, "game-end", {
-      winner: game.computeWinner(),
-    });
     this.games = this.games.filter((g) => g.id !== game.id);
   }
 
