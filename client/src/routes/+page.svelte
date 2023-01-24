@@ -5,6 +5,10 @@
 	let playing = false;
 </script>
 
+<svelte:head>
+	<title>Bot Or Not</title>
+</svelte:head>
+
 <main class="flex flex-col min-h-screen">
 	{#if !playing}
 		<section
