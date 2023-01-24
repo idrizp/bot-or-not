@@ -36,16 +36,14 @@
 </script>
 
 {#if !$playing}
-	<main
-		class="min-h-screen flex flex-col place-items-center place-content-center mx-6 tracking-tight"
-	>
+	<main class="flex-1 flex flex-col place-items-center place-content-center mx-6 tracking-tight">
 		<Spinner />
 		<p class="text-white text-center font-medium">
 			Waiting to find a match... (don't believe the spinner, this could just be readying the bot!)
 		</p>
 	</main>
 {:else if $winner === ''}
-	<main class="flex flex-col text-white min-h-screen">
+	<main class="flex-1 flex flex-col text-white">
 		<div class="p-6 bg-gray-800 text-center">
 			<p class="font-bold">
 				You are a <span
@@ -60,11 +58,14 @@
 		<div class="flex-1 flex flex-col mx-6 mt-10">
 			{#each $messages as message}
 				{#if !message.opponent}
-					<p class="self-end p-2 rounded-full mt-2 bg-green-600" class:bg-red-500={$role === 'bot'}>
+					<p
+						class="self-end p-3 sm:p-2 rounded-full mt-2 bg-green-600"
+						class:bg-red-500={$role === 'bot'}
+					>
 						{message.message}
 					</p>
 				{:else}
-					<p class="self-start bg-blue-500 p-2 rounded-full mt-2">{message.message}</p>
+					<p class="self-start bg-blue-500 p-3 sm:p-2 rounded-full mt-2">{message.message}</p>
 				{/if}
 			{/each}
 		</div>
@@ -123,9 +124,7 @@
 		</form>
 	</main>
 {:else}
-	<main
-		class="min-h-screen flex flex-col place-items-center place-content-center mx-6 tracking-tight"
-	>
+	<main class="flex-1 flex flex-col place-items-center place-content-center mx-6 tracking-tight">
 		<p class="text-white text-center font-medium text-4xl mb-10">
 			<span
 				class="font-bold uppercase"
