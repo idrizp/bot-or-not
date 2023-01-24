@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
   socket.onAny(async (event, ...args) => {
     try {
       await rateLimiter.consume(socket.handshake.address); // consume 1 point per event from IP
-    } catch (rejRes) {
+    } catch (rejRes: any) {
       socket.emit("blocked", { "retry-ms": rejRes.msBeforeNext });
     }
   });
